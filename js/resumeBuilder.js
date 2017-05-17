@@ -124,3 +124,9 @@ var formattedEmail = HTMLemail.replace("%data%",bio.contacts.email);
 
 $("#header").append(formattedMobile);
 $("#header").append(formattedEmail);
+
+var formattedTwitter = HTMLtwitter.replace("%data%",bio.twitter);
+$("#header").append(formattedTwitter);
+
+var formattedGitHub = HTMLgithub.replace("%data%",bio.github);
+$("#header").append(formattedGitHub);
