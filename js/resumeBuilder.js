@@ -28,7 +28,7 @@ var work = {
     }
   ]
 };
-
+function displayWork(){
   work.jobs.forEach(function(job){
   $("#workExperience").append(HTMLworkStart);
   var formattedEmployer = HTMLworkEmployer.replace("%data%",job.employer);
@@ -42,7 +42,7 @@ var work = {
   var formattedDescription = HTMLworkDescription.replace("%data%", job.description);
   $(".work-entry:last").append(formattedDescription);
 });
-
+}
 
 
 var projects = {
@@ -56,7 +56,7 @@ var projects = {
     }
   ]
 };
-
+function displayProjects() {
 projects.projects.forEach(function(project){
 $("#projects").append(HTMLprojectStart);
 var formattedTitle = HTMLprojectTitle.replace("%data%",project.title);
@@ -66,6 +66,7 @@ $(".project-entry:last").append(formattedDates);
 var formattedDescription = HTMLprojectDescription.replace("%data%", project.description);
 $(".project-entry:last").append(formattedDescription);
 });
+}
 
 var education = {
   "schools": [
@@ -96,6 +97,7 @@ var education = {
   ]
 };
 
+function displayEducation(){
 education.schools.forEach(function(school){
 $("#education").append(HTMLschoolStart);
 var formattedName = HTMLschoolName.replace("%data%",school.name);
@@ -109,11 +111,11 @@ $(".education-entry:last").append(formattedMajor);
 var formattedDegreeDate = HTMLschoolDates.replace("%data%",school.degreeDate);
 $(".education-entry:last").append(formattedDegreeDate);
 });
-
+}
 //education.schools.onlineCourses.forEach(function(course) {
 //  $("#Online").append(HTMLonlineSchool);
 //});
-
+function displayBio(){
 var formattedName = HTMLheaderName.replace("%data%",bio.name);
 var formattedRole = HTMLheaderRole.replace("%data%",bio.role);
 $("#header").prepend(formattedRole);
@@ -130,3 +132,9 @@ $("#header").append(formattedTwitter);
 
 var formattedGitHub = HTMLgithub.replace("%data%",bio.github);
 $("#header").append(formattedGitHub);
+}
+
+displayBio();
+displayWork();
+displayProjects();
+displayEducation();
