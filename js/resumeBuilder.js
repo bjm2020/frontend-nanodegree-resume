@@ -27,7 +27,33 @@ var work = {
       "description": "CEO of Fleur De Lis FCU",
       "url": "http://www.fdlfcu.com"
     }
-  ]
+  ],
+  "positions":[
+    {
+    "position": "Loan Processor",
+    "dates": "Dec 2001-Feb 2001"
+  },
+  {
+  "position": "Teller",
+  "dates": "Feb 2001 - Jan 2003"
+},
+{
+"position": "Account Services Specialist",
+"dates": "Jan 2003 - Aug 2005"
+},
+{
+"position": "IT Manager",
+"dates": "Aug 2005 - Sep 2013"
+},
+{
+"position": "Operations Manager",
+"dates": "Sep 2013 - Jan 2014"
+},
+{
+"position": "President/CEO",
+"dates": "Jan 2014 - Future"
+}
+]
 };
 function displayWork(){
   work.jobs.forEach(function(job){
@@ -41,7 +67,13 @@ function displayWork(){
   $(".work-entry:last").find("a").attr("href",job.url);
   var formattedDates = HTMLworkDates.replace("%data%", job.dates);
   $(".work-entry:last").append(formattedDates);
-
+  work.positions.forEach(function(position) {
+    $(".work-entry:last").append(HTMLpositionStart);
+    var formattedPosition = HTMLPosition.replace("%data%",position.position);
+    var formattedPositionDates = HTMLPositionDates.replace("%data%",position.dates);
+    var positionDate = formattedPosition + formattedPositionDates;
+    $(".position-entry:last").prepend(positionDate);
+  });
   var formattedDescription = HTMLworkDescription.replace("%data%", job.description);
   $(".work-entry:last").append(formattedDescription);
 });
