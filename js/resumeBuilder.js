@@ -79,9 +79,9 @@ function displayWork(){
     var formattedPosition = HTMLPosition.replace("%data%",position.position);
     var formattedPositionDates = HTMLPositionDates.replace("%data%",position.dates);
 
-    console.log(positionDate);
+
     $("#workExperience").append(HTMLpositionStart);
-  
+
     $(".position-entry:last").append(formattedPosition);
     $(".position-entry:last").append(formattedPositionDates);
 
@@ -158,17 +158,27 @@ education.schools.forEach(function(school){
 $("#education").append(HTMLschoolStart);
 var formattedName = HTMLschoolName.replace("%data%",school.name);
 //formattedName.replace("%url%",school.url);
-$(".education-entry:last").append(formattedName);
-$(".education-entry:last").find("a").attr("href",school.url);
-var formattedLocation = HTMLschoolLocation.replace("%data%",school.location);
-$(".education-entry:last").append(formattedLocation);
+//$(".education-entry:last").append(formattedName);
 var formattedDegree = HTMLschoolDegree.replace("%data%",school.degree);
-$(".education-entry:last").append(formattedDegree);
-var formattedMajor = HTMLschoolMajor.replace("%data%",school.majors[0]);
-$(".education-entry:last").append(formattedMajor);
+var formattedNameDegree = formattedName+formattedDegree;
+$(".education-entry:last").append(formattedNameDegree);
+
+//var formattedEmployerTitle = formattedEmployer + formattedTitle;
+//$(".work-entry:last").append(formattedEmployerTitle);
+$(".education-entry:last").find("a").attr("href",school.url);
+
 var formattedDegreeDate = HTMLschoolDates.replace("%data%",school.degreeDate);
 $(".education-entry:last").append(formattedDegreeDate);
+
+var formattedLocation = HTMLschoolLocation.replace("%data%",school.location);
+$(".education-entry:last").append(formattedLocation);
+
+school.majors.forEach(function(major) {
+  var formattedMajor = HTMLschoolMajor.replace("%data%",major);
+  $(".education-entry:last").append(formattedMajor);
 });
+});
+
   $("#education").append(HTMLonlineClasses);
 
 education.onlineCourses.forEach(function(course) {
