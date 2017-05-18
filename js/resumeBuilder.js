@@ -72,7 +72,8 @@ function displayWork(){
     var formattedPosition = HTMLPosition.replace("%data%",position.position);
     var formattedPositionDates = HTMLPositionDates.replace("%data%",position.dates);
     var positionDate = formattedPosition + formattedPositionDates;
-    $(".position-entry:last").prepend(positionDate);
+    $(".position-entry:last").append(formattedPosition);
+    $(".position-entry:last").append(formattedPositionDates);
   });
   var formattedDescription = HTMLworkDescription.replace("%data%", job.description);
   $(".work-entry:last").append(formattedDescription);

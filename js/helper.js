@@ -37,8 +37,8 @@ var HTMLworkLocation = '<div class="location-text">%data%</div>';
 var HTMLworkDescription = '<p><br>%data%</p>';
 
 var HTMLpositionStart = '<div class="position-entry"></div>';
-var HTMLPosition = '<div>%data% - </div>';
-var HTMLPositionDates = '<div class="date-text">%data%</div>';
+var HTMLPosition = '<p>%data% - ';
+var HTMLPositionDates = '%data%</p>';
 
 var HTMLprojectStart = '<div class="project-entry"></div>';
 var HTMLprojectTitle = '<a href="#">%data%</a>';
