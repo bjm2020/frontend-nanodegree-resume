@@ -25,6 +25,7 @@ var work = {
       "dates": "2001-Future",
       "otherPositions": ["loan processor","teller", "Account Specialist", "IT Manager", "Operations Manager"],
       "description": "CEO of Fleur De Lis FCU",
+      "location": "Metairie, LA",
       "url": "http://www.fdlfcu.com"
     }
   ],
@@ -67,13 +68,24 @@ function displayWork(){
   $(".work-entry:last").find("a").attr("href",job.url);
   var formattedDates = HTMLworkDates.replace("%data%", job.dates);
   $(".work-entry:last").append(formattedDates);
+
+  var formattedWorkLocation = HTMLworkLocation.replace("%data%",job.location);
+  $(".work-entry:last").append(formattedWorkLocation);
+
+    $("#workExperience").append(HTMLposition);
+
   work.positions.forEach(function(position) {
-    $(".work-entry:last").append(HTMLpositionStart);
+
     var formattedPosition = HTMLPosition.replace("%data%",position.position);
     var formattedPositionDates = HTMLPositionDates.replace("%data%",position.dates);
-    var positionDate = formattedPosition + formattedPositionDates;
+
+    console.log(positionDate);
+    $("#workExperience").append(HTMLpositionStart);
+  
     $(".position-entry:last").append(formattedPosition);
     $(".position-entry:last").append(formattedPositionDates);
+
+
   });
   var formattedDescription = HTMLworkDescription.replace("%data%", job.description);
   $(".work-entry:last").append(formattedDescription);
