@@ -9,7 +9,7 @@ var bio = {
     "mobile": "504-616-7164",
     "email": "rmayfield@fdlfcu.com",
     "github": "bjm2020",
-    "twitter": "@bjm2020",
+    "twitter": "@bobbymayfield",
     "location": "Lafitte, LA"
   },
   "profilePic": "images/fry.jpg",
@@ -24,7 +24,8 @@ var work = {
       "title": "President/CEO",
       "dates": "2001-Future",
       "otherPositions": ["loan processor","teller", "Account Specialist", "IT Manager", "Operations Manager"],
-      "description": "CEO of Fleur De Lis FCU"
+      "description": "CEO of Fleur De Lis FCU",
+      "url": "http://www.fdlfcu.com"
     }
   ]
 };
@@ -32,10 +33,12 @@ function displayWork(){
   work.jobs.forEach(function(job){
   $("#workExperience").append(HTMLworkStart);
   var formattedEmployer = HTMLworkEmployer.replace("%data%",job.employer);
+
   var formattedTitle = HTMLworkTitle.replace("%data%",/*work.jobs[job]*/job.title);
+
   var formattedEmployerTitle = formattedEmployer + formattedTitle;
   $(".work-entry:last").append(formattedEmployerTitle);
-
+  $(".work-entry:last").find("a").attr("href",job.url);
   var formattedDates = HTMLworkDates.replace("%data%", job.dates);
   $(".work-entry:last").append(formattedDates);
 
@@ -51,7 +54,7 @@ var projects = {
       "title": "sample",
       "dates": "2001",
       "description": "description",
-      "images": []
+      "images": ["../images/197x148.gif","../images/197x148.gif"]
 
     }
   ]
@@ -60,11 +63,19 @@ function displayProjects() {
 projects.projects.forEach(function(project){
 $("#projects").append(HTMLprojectStart);
 var formattedTitle = HTMLprojectTitle.replace("%data%",project.title);
+
 $(".project-entry:last").append(formattedTitle);
 var formattedDates = HTMLprojectDates.replace("%data%",project.dates);
 $(".project-entry:last").append(formattedDates);
 var formattedDescription = HTMLprojectDescription.replace("%data%", project.description);
 $(".project-entry:last").append(formattedDescription);
+if(project.images.length > 0){
+  for (image in project.images) {
+    var formattedImage = HTMLprojectImage.replace("%data", project.images[image]);
+    $(".project-entry:last").append(formattedImage);
+  }
+}
+
 });
 }
 
@@ -76,7 +87,7 @@ var education = {
       "degree": "High School Diploma",
       "majors": ["College Prep"],
       "degreeDate": "2001",
-      "url": "fisher.jpschools.org"
+      "url": "http://fisher.jpschools.org"
     },
     {
       "name": "University Of New Orleans",
@@ -84,7 +95,7 @@ var education = {
       "degree": "Bachelors",
       "majors": ["BA-MIS"],
       "degreeDate": "2013",
-      "url": "www.uno.edu"
+      "url": "http://www.uno.edu"
     }
   ],
   "onlineCourses": [
@@ -101,7 +112,9 @@ function displayEducation(){
 education.schools.forEach(function(school){
 $("#education").append(HTMLschoolStart);
 var formattedName = HTMLschoolName.replace("%data%",school.name);
+//formattedName.replace("%url%",school.url);
 $(".education-entry:last").append(formattedName);
+$(".education-entry:last").find("a").attr("href",school.url);
 var formattedLocation = HTMLschoolLocation.replace("%data%",school.location);
 $(".education-entry:last").append(formattedLocation);
 var formattedDegree = HTMLschoolDegree.replace("%data%",school.degree);
@@ -110,6 +123,22 @@ var formattedMajor = HTMLschoolMajor.replace("%data%",school.majors[0]);
 $(".education-entry:last").append(formattedMajor);
 var formattedDegreeDate = HTMLschoolDates.replace("%data%",school.degreeDate);
 $(".education-entry:last").append(formattedDegreeDate);
+});
+  $("#education").append(HTMLonlineClasses);
+
+education.onlineCourses.forEach(function(course) {
+  $("#education").append(HTMLonlineStart);
+  var formattedTitle = HTMLonlineTitle.replace("%data%",course.title);
+  var formattedURL = HTMLonlineURL.replace("%data%",course.url);
+  $(".online-entry").append(formattedTitle);
+  $(".online-entry:last").find("a").attr("href",course.url);
+  var formattedSchool = HTMLonlineSchool.replace("%data%",course.school);
+  $(".online-entry").append(formattedSchool);
+  var formattedDates = HTMLonlineDates.replace("%data%",course.dates);
+  $(".online-entry").append(formattedDates);
+
+
+
 });
 }
 //education.schools.onlineCourses.forEach(function(course) {
@@ -121,20 +150,46 @@ var formattedRole = HTMLheaderRole.replace("%data%",bio.role);
 $("#header").prepend(formattedRole);
 $("#header").prepend(formattedName);
 
+var formattedBioPic = HTMLbioPic.replace("%data%", bio.profilePic);
+var formattedWelcome = HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage);
+$("#header").prepend(formattedBioPic);
+$("#header").append(formattedWelcome);
+
 var formattedMobile = HTMLmobile.replace("%data%",bio.contacts.mobile);
 var formattedEmail = HTMLemail.replace("%data%",bio.contacts.email);
 
-$("#header").append(formattedMobile);
-$("#header").append(formattedEmail);
+$("#topContacts").append(formattedMobile);
+$("#topContacts").append(formattedEmail);
+$(".email").attr("href","mailto:" + bio.contacts.email);
+var formattedTwitter = HTMLtwitter.replace("%data%",bio.contacts.twitter);
+$("#topContacts").append(formattedTwitter);
+$(".twitter").find('a').attr("href","http://twitter.com/" + bio.contacts.twitter);
 
-var formattedTwitter = HTMLtwitter.replace("%data%",bio.twitter);
-$("#header").append(formattedTwitter);
+var formattedGitHub = HTMLgithub.replace("%data%",bio.contacts.github);
+$("#topContacts").append(formattedGitHub);
+$(".twitter").find('a').attr("href","http://www.github.com/" + bio.contacts.github);
 
-var formattedGitHub = HTMLgithub.replace("%data%",bio.github);
-$("#header").append(formattedGitHub);
+$("#header").append(HTMLskillsStart);
+bio.skills.forEach(function(skill) {
+
+  var formattedSkills = HTMLskills.replace("%data%",skill);
+  $("#skills").append(formattedSkills);
+});
 }
 
+function displayFooter(){
+  var formattedEmail = HTMLFooteremail.replace("%data%",bio.contacts.email);
+  var formattedMobile = HTMLFootermobile.replace("%data%",bio.contacts.mobile);
+  var formattedTwitter = HTMLFootertwitter.replace("%data%",bio.contacts.twitter);
+  $("#footerContacts").append(formattedEmail);
+  $("#footerContacts").append(formattedMobile);
+  $("#footerContacts").append(formattedTwitter);
+  $(".footerEmail").attr("href","mailto:" + bio.contacts.email);
+}
 displayBio();
 displayWork();
 displayProjects();
 displayEducation();
+displayFooter();
+
+$("#mapDiv").append(googleMap);
