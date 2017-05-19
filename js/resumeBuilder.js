@@ -1,21 +1,50 @@
-/*
-This is empty on purpose! Your code to build the resume will go here.
- */
- //$("#main").append("Robert Mayfield");
 var bio = {
   "name": "Robert Mayfield",
   "role": "Front End Web Developer",
   "contacts": {
-    "mobile": "504-616-7164",
-    "email": "rmayfield@fdlfcu.com",
+    "mobile": "555-555-5555",
+    "email": "email@email.com",
     "github": "bjm2020",
     "twitter": "@bobbymayfield",
     "location": "Lafitte, LA"
   },
   "profilePic": "images/bob.jpg",
-  "welcomeMessage": "Hello World",
-  "skills": ["awesomeness", "programming" , "teaching", "JS"]
+  "welcomeMessage": "Welcome to my online resume.  Please scroll down for a short history of my work and accomplishments.",
+  "skills": ["leadership","risk management","programming", "Javascript/CSS"]
 };
+
+bio.display = function(){
+var formattedName = HTMLheaderName.replace("%data%",bio.name);
+var formattedRole = HTMLheaderRole.replace("%data%",bio.role);
+$("#header").prepend(formattedRole);
+$("#header").prepend(formattedName);
+
+var formattedBioPic = HTMLbioPic.replace("%data%", bio.profilePic);
+var formattedWelcome = HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage);
+$("#header").prepend(formattedBioPic);
+$("#header").append(formattedWelcome);
+
+var formattedMobile = HTMLmobile.replace("%data%",bio.contacts.mobile);
+var formattedEmail = HTMLemail.replace("%data%",bio.contacts.email);
+
+$("#topContacts").append(formattedMobile);
+$("#topContacts").append(formattedEmail);
+$(".email").attr("href","mailto:" + bio.contacts.email);
+var formattedTwitter = HTMLtwitter.replace("%data%",bio.contacts.twitter);
+$("#topContacts").append(formattedTwitter);
+$(".twitter").find('a').attr("href","http://twitter.com/" + bio.contacts.twitter);
+
+var formattedGitHub = HTMLgithub.replace("%data%",bio.contacts.github);
+$("#topContacts").append(formattedGitHub);
+$(".github").find('a').attr("href","http://www.github.com/" + bio.contacts.github);
+
+$("#header").append(HTMLskillsStart);
+bio.skills.forEach(function(skill) {
+
+  var formattedSkills = HTMLskills.replace("%data%",skill);
+  $("#skills").append(formattedSkills);
+});
+}
 
 var work = {
   "jobs": [
@@ -24,7 +53,7 @@ var work = {
       "title": "President/CEO",
       "dates": "2001-Future",
       "otherPositions": ["loan processor","teller", "Account Specialist", "IT Manager", "Operations Manager"],
-      "description": "CEO of Fleur De Lis FCU",
+      "description": "I started my career at the credit union as a temporary worker during my first semester of college.  Since then I have gained experience in nearly every position available at the credit union.  As President/CEO, I have lead the credit union to achieving stable and healthy growth in a competitive market.",
       "location": "Metairie, LA",
       "url": "http://www.fdlfcu.com"
     }
@@ -56,7 +85,8 @@ var work = {
 }
 ]
 };
-function displayWork(){
+
+work.display = function(){
   work.jobs.forEach(function(job){
   $("#workExperience").append(HTMLworkStart);
   var formattedEmployer = HTMLworkEmployer.replace("%data%",job.employer);
@@ -96,15 +126,23 @@ function displayWork(){
 var projects = {
   "projects": [
     {
-      "title": "sample",
-      "dates": "2001",
-      "description": "description",
-      "images": ["../images/197x148.gif","../images/197x148.gif"]
+      "title": "Money Desktop Online Banking Integation",
+      "dates": "2015",
+      "description": "Successfully integrated Money Desktop PFM into the credit union's online banking system.  The money desktop personal financial managment platform allows credit union members to manage all of their external and credit union accounts, set goals, set budgets, categorize transactions, and much more",
+      "images": ["images/moneydesktop_sm.png","images/moneydesktop2_sm.png"]
+
+    },
+    {
+      "title": "Credit Union Growth",
+      "dates": "2013-Present",
+      "description": "At the time of my promotion to operations manager, the credit union had seen better days.  The credit union had consistent yearly negative earning for the previous 5 years and was nearing the ncua capital to asset ratio limit of 7%.  Any lower would likely put the credit union into a forced major situation.  Since this time, I have worked with my staff and board of directors to improve operational efficiencies, reduce expenses, increase investment portfolio income, and increase loan revenue.  We have shown consistent positive earnings over the last three years, increased our capital ratio above 10%, increased our loan to share ratio from 32% to 48%, and are seeing membership growth for the first time in over 5 years.",
+      "images": ["images/growth.jpg","images/growth2.jpg"]
 
     }
   ]
 };
-function displayProjects() {
+
+projects.display = function() {
 projects.projects.forEach(function(project){
 $("#projects").append(HTMLprojectStart);
 var formattedTitle = HTMLprojectTitle.replace("%data%",project.title);
@@ -115,11 +153,15 @@ $(".project-entry:last").append(formattedDates);
 var formattedDescription = HTMLprojectDescription.replace("%data%", project.description);
 $(".project-entry:last").append(formattedDescription);
 if(project.images.length > 0){
-  for (image in project.images) {
-    var formattedImage = HTMLprojectImage.replace("%data", project.images[image]);
+  for(var i = 0; i < project.images.length; i++) {
+
+    var image = project.images[i];
+    var formattedImage = HTMLprojectImage.replace("%data%", image);
     $(".project-entry:last").append(formattedImage);
+
   }
-}
+  }
+
 
 });
 }
@@ -161,7 +203,7 @@ var education = {
   ]
 };
 
-function displayEducation(){
+education.display = function(){
 education.schools.forEach(function(school){
 $("#education").append(HTMLschoolStart);
 var formattedName = HTMLschoolName.replace("%data%",school.name);
@@ -200,14 +242,10 @@ education.onlineCourses.forEach(function(course) {
   var formattedDates = HTMLonlineDates.replace("%data%",course.dates);
   $(".online-entry").append(formattedDates);
 
-
-
 });
 }
-//education.schools.onlineCourses.forEach(function(course) {
-//  $("#Online").append(HTMLonlineSchool);
-//});
-function displayBio(){
+
+bio.display = function(){
 var formattedName = HTMLheaderName.replace("%data%",bio.name);
 var formattedRole = HTMLheaderRole.replace("%data%",bio.role);
 $("#header").prepend(formattedRole);
@@ -250,10 +288,11 @@ function displayFooter(){
   $(".footerEmail").attr("href","mailto:" + bio.contacts.email);
   $(".footerTwitter").attr("href","http://www.twitter.com/" + bio.contacts.twitter);
 }
-displayBio();
-displayWork();
-displayProjects();
-displayEducation();
+bio.display();
+work.display();
+//displayProjects();
+projects.display();
+education.display();
 displayFooter();
 
 $("#mapDiv").append(googleMap);

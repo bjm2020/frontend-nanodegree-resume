@@ -139,6 +139,7 @@ function initializeMap() {
     // initializes an empty array
     var locations = [];
 
+
     // adds the single location property from bio to the locations array
     locations.push(bio.contacts.location);
 
@@ -190,7 +191,7 @@ function initializeMap() {
 
     // hmmmm, I wonder what this is about...
     google.maps.event.addListener(marker, 'click', function() {
-      // your code goes here!
+      infoWindow.open(map,marker);
     });
 
     // this is where the pin actually gets added to the map.
