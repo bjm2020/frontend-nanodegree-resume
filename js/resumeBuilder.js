@@ -265,7 +265,7 @@ education.display = function() {
         $(".online-entry").append(formattedDates);
     });
 }
-//format footer emails to html and append to footer section of page.  hyperlinks are also added
+//format footer emails to html nd append to footer section of page.  hyperlinks are also added
 //and custom classes were added to helper.js.
 function displayFooter() {
     var formattedEmail = HTMLFooteremail.replace("%data%", bio.contacts.email);
