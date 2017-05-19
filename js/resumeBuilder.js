@@ -9,7 +9,7 @@ var bio = {
         "twitter": "@bobbymayfield",
         "location": "Lafitte, LA"
     },
-    "profilePic": "images/bob.jpg",
+    "biopic": "images/bob.jpg",
     "welcomeMessage": "Welcome to my online resume.  Please scroll down for a short history of my work and accomplishments.",
     "skills": ["leadership", "risk management", "programming", "Javascript/CSS"]
 };
@@ -25,7 +25,7 @@ bio.display = function() {
     $("#header").prepend(formattedName);
 
     //add bio pic and welcome message to html and append to header id
-    var formattedBioPic = HTMLbioPic.replace("%data%", bio.profilePic);
+    var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
     var formattedWelcome = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
     $("#header").prepend(formattedBioPic);
     $("#header").append(formattedWelcome);
@@ -194,7 +194,7 @@ var education = {
             "location": "Lafitte, LA",
             "degree": "High School Diploma",
             "majors": ["College Prep"],
-            "degreeDate": "2001",
+            "dates": "2001",
             "url": "http://fisher.jpschools.org"
         },
         {
@@ -202,7 +202,7 @@ var education = {
             "location": "New Orleans, LA",
             "degree": "Bachelors",
             "majors": ["BA-MIS"],
-            "degreeDate": "2013",
+            "dates": "2013",
             "url": "http://www.uno.edu"
         },
         {
@@ -210,7 +210,7 @@ var education = {
             "location": "Athens, GA",
             "degree": "Certificate of Completion",
             "majors": ["Credit Union Leadership"],
-            "degreeDate": "2014",
+            "dates": "2014",
             "url": "http://www.srcus.org"
         }
     ],
@@ -237,7 +237,7 @@ education.display = function() {
         //add school url hyperlink to school name
         $(".education-entry:last").find("a").attr("href", school.url);
 
-        var formattedDegreeDate = HTMLschoolDates.replace("%data%", school.degreeDate);
+        var formattedDegreeDate = HTMLschoolDates.replace("%data%", school.dates);
         $(".education-entry:last").append(formattedDegreeDate);
 
         var formattedLocation = HTMLschoolLocation.replace("%data%", school.location);
