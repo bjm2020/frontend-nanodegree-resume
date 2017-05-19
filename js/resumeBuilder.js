@@ -60,7 +60,7 @@ bio.display = function() {
         var formattedSkills = HTMLskills.replace("%data%", skill);
         $("#skills").append(formattedSkills);
     });
-}
+};
 //work object.  contains an array of jobs and positions held at the employer.
 var work = {
     "jobs": [{
@@ -137,7 +137,7 @@ work.display = function() {
         $(".work-entry:last").append(formattedDescription);
 
     });
-}
+};
 
 //projects object.  contains array of completed projects and information about them.
 
@@ -186,7 +186,7 @@ projects.display = function() {
             }
         }
     });
-}
+};
 //education object.  Contains array of schools and online courses with graduate information
 var education = {
     "schools": [{
@@ -264,7 +264,7 @@ education.display = function() {
         var formattedDates = HTMLonlineDates.replace("%data%", course.dates);
         $(".online-entry").append(formattedDates);
     });
-}
+};
 //format footer emails to html nd append to footer section of page.  hyperlinks are also added
 //and custom classes were added to helper.js.
 function displayFooter() {

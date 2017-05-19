@@ -37,7 +37,7 @@ var HTMLworkLocation = '<div class="location-text">%data%</div>';
 var HTMLworkDescription = '<p><br>%data%</p>';
 
 var HTMLposition = '<h3>Positions Held</h3>';
-var HTMLpositionStart = '<div class="position-entry"></div>'
+var HTMLpositionStart = '<div class="position-entry"></div>';
 var HTMLPosition = '<span>%data%</span> ';
 var HTMLPositionDates = '<span class="date-text">%data%</span>';
 
