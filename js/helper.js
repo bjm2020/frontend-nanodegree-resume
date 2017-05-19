@@ -19,7 +19,7 @@ var HTMLcontactGeneric = '<li class="flex-item"><span class="orange-text">%conta
 var HTMLmobile = '<li class="flex-item"><span class="orange-text">mobile</span><span class="white-text"><a>%data%</a></span></li>';
 var HTMLemail = '<li class= "flex-item"><span class="orange-text">email</span><span class="white-text"><a class="email" href="#">%data%</a></span></li>';
 var HTMLtwitter = '<li class="flex-item"><span class="orange-text">twitter</span><span class="white-text twitter"><a href="#">%data%</a></span></li>';
-var HTMLgithub = '<li class="flex-item"><span class="orange-text">github</span><span class="white-text twitter"><a href="#">%data%</a></span></li>';
+var HTMLgithub = '<li class="flex-item"><span class="orange-text">github</span><span class="white-text github"><a href="#">%data%</a></span></li>';
 var HTMLblog = '<li class="flex-item"><span class="orange-text">blog</span><span class="white-text">%data%</span></li>';
 var HTMLlocation = '<li class="flex-item"><span class="orange-text">location</span><span class="white-text">%data%</span></li>';
 
@@ -66,7 +66,7 @@ var googleMap = '<div id="map"></div>';
 
 var HTMLFootermobile = '<li class="flex-item"><span class="orange-text">mobile</span><a href="#"><span class="white-text">%data%</span></a></li>';
 var HTMLFooteremail = '<li class= "flex-item"><span class="orange-text">email</span><span class="white-text"><a class="footerEmail" href="#">%data%</a></span></li>';
-var HTMLFootertwitter = '<li class="flex-item"><span class="orange-text">twitter</span><span class="white-text twitter"><a href="#">%data%</a></span></li>';
+var HTMLFootertwitter = '<li class="flex-item"><span class="orange-text">twitter</span><span class="white-text"><a class=" footerTwitter" href="#">%data%</a></span></li>';
 
 //var HTMLfooterEmail = '<li class="flex-item"><span class="orange-text">email</span><span class="white-text">%data%</span></li>';
 //var HTMLfooterCell =

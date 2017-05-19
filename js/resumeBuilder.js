@@ -12,7 +12,7 @@ var bio = {
     "twitter": "@bobbymayfield",
     "location": "Lafitte, LA"
   },
-  "profilePic": "images/fry.jpg",
+  "profilePic": "images/bob.jpg",
   "welcomeMessage": "Hello World",
   "skills": ["awesomeness", "programming" , "teaching", "JS"]
 };
@@ -141,6 +141,14 @@ var education = {
       "majors": ["BA-MIS"],
       "degreeDate": "2013",
       "url": "http://www.uno.edu"
+    },
+    {
+      "name": "Southeast Regional CUNA Management School",
+      "location": "Athens, GA",
+      "degree": "Certificate of Completion",
+      "majors": ["Credit Union Leadership"],
+      "degreeDate": "2014",
+      "url": "http://www.srcus.org"
     }
   ],
   "onlineCourses": [
@@ -222,7 +230,7 @@ $(".twitter").find('a').attr("href","http://twitter.com/" + bio.contacts.twitter
 
 var formattedGitHub = HTMLgithub.replace("%data%",bio.contacts.github);
 $("#topContacts").append(formattedGitHub);
-$(".twitter").find('a').attr("href","http://www.github.com/" + bio.contacts.github);
+$(".github").find('a').attr("href","http://www.github.com/" + bio.contacts.github);
 
 $("#header").append(HTMLskillsStart);
 bio.skills.forEach(function(skill) {
@@ -240,6 +248,7 @@ function displayFooter(){
   $("#footerContacts").append(formattedMobile);
   $("#footerContacts").append(formattedTwitter);
   $(".footerEmail").attr("href","mailto:" + bio.contacts.email);
+  $(".footerTwitter").attr("href","http://www.twitter.com/" + bio.contacts.twitter);
 }
 displayBio();
 displayWork();
