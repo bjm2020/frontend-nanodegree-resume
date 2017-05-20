@@ -51,6 +51,9 @@ bio.display = function() {
     $("#topContacts").append(formattedGitHub);
     $(".github").find("a").attr("href", "http://www.github.com/" + bio.contacts.github);
 
+    var formattedLocation = HTMLlocation.replace("%data%",bio.contacts.location);
+    $("#topContacts").append(formattedLocation);
+
     //start skills section
     $("#header").append(HTMLskillsStart);
 
@@ -271,9 +274,11 @@ function displayFooter() {
     var formattedEmail = HTMLFooteremail.replace("%data%", bio.contacts.email);
     var formattedMobile = HTMLFootermobile.replace("%data%", bio.contacts.mobile);
     var formattedTwitter = HTMLFootertwitter.replace("%data%", bio.contacts.twitter);
+    var formattedLocation = HTMLFooterlocation.replace("%data5",bio.contacts.location);
     $("#footerContacts").append(formattedEmail);
     $("#footerContacts").append(formattedMobile);
     $("#footerContacts").append(formattedTwitter);
+    $("#footerContacts").append(formattedLocation);
     $(".footerEmail").attr("href", "mailto:" + bio.contacts.email);
     $(".footerTwitter").attr("href", "http://www.twitter.com/" + bio.contacts.twitter);
 }
