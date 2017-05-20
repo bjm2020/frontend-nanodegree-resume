@@ -14,6 +14,7 @@ var bio = {
     "skills": ["leadership", "risk management", "programming", "Javascript/CSS"]
 };
 
+
 //display bio function
 
 bio.display = function() {
@@ -30,29 +31,23 @@ bio.display = function() {
     $("#header").prepend(formattedBioPic);
     $("#header").append(formattedWelcome);
 
-    //format mobile and email to html and append to topContact id
+    //format mobile and email to html and append to topContacts and footerContacts id
     var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
-    var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
-    $("#topContacts").append(formattedMobile);
-    $("#topContacts").append(formattedEmail);
+    var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email).replace("#","mailto:" + bio.contacts.email);
+    $("#topContacts,#footerContacts").append(formattedMobile);
+    $("#topContacts,#footerContacts").append(formattedEmail);
 
-    //add emailto hyperlink to Email attribute. *added class in helper.js
-    $(".email").attr("href", "mailto:" + bio.contacts.email);
 
     //format twitter handle to html and add to topContact id
-    var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
-    $("#topContacts").append(formattedTwitter);
-
-    //add twitter hyperlink to twitter attribute. *Added class in helper.js
-    $(".twitter").find("a").attr("href", "http://twitter.com/" + bio.contacts.twitter);
+    var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter).replace("#","http://twitter.com/" + bio.contacts.twitter);
+    $("#topContacts,#footerContacts").append(formattedTwitter);
 
 
-    var formattedGitHub = HTMLgithub.replace("%data%", bio.contacts.github);
-    $("#topContacts").append(formattedGitHub);
-    $(".github").find("a").attr("href", "http://www.github.com/" + bio.contacts.github);
+    var formattedGitHub = HTMLgithub.replace("%data%", bio.contacts.github).replace("#","http://www.github.com/" + bio.contacts.github);
+    $("#topContacts,#footerContacts").append(formattedGitHub);
 
     var formattedLocation = HTMLlocation.replace("%data%",bio.contacts.location);
-    $("#topContacts").append(formattedLocation);
+    $("#topContacts,#footerContacts").append(formattedLocation);
 
     //start skills section
     $("#header").append(HTMLskillsStart);
@@ -113,7 +108,7 @@ work.display = function() {
 
         $("#workExperience").append(HTMLworkStart);
         var formattedEmployer = HTMLworkEmployer.replace("%data%", job.employer);
-        var formattedTitle = HTMLworkTitle.replace("%data%", /*work.jobs[job]*/ job.title);
+        var formattedTitle = HTMLworkTitle.replace("%data%", job.title);
         var formattedEmployerTitle = formattedEmployer + formattedTitle;
         $(".work-entry:last").append(formattedEmployerTitle);
         $(".work-entry:last").find("a").attr("href", job.url);
@@ -234,13 +229,10 @@ education.display = function() {
   //loop through education object, format to html, and append to page.
     education.schools.forEach(function(school) {
         $("#education").append(HTMLschoolStart);
-        var formattedName = HTMLschoolName.replace("%data%", school.name);
+        var formattedName = HTMLschoolName.replace("%data%", school.name).replace("#",school.url);
         var formattedDegree = HTMLschoolDegree.replace("%data%", school.degree);
         var formattedNameDegree = formattedName + formattedDegree;
         $(".education-entry:last").append(formattedNameDegree);
-
-        //add school url hyperlink to school name
-        $(".education-entry:last").find("a").attr("href", school.url);
 
         var formattedDegreeDate = HTMLschoolDates.replace("%data%", school.dates);
         $(".education-entry:last").append(formattedDegreeDate);
@@ -261,35 +253,20 @@ education.display = function() {
     education.onlineCourses.forEach(function(course) {
 
         $("#education").append(HTMLonlineStart);
-        var formattedTitle = HTMLonlineTitle.replace("%data%", course.title);
+        var formattedTitle = HTMLonlineTitle.replace("%data%", course.title).replace("#",course.url);
         $(".online-entry").append(formattedTitle);
-        $(".online-entry:last").find("a").attr("href", course.url);
         var formattedSchool = HTMLonlineSchool.replace("%data%", course.school);
         $(".online-entry").append(formattedSchool);
         var formattedDates = HTMLonlineDates.replace("%data%", course.dates);
         $(".online-entry").append(formattedDates);
     });
 };
-//format footer emails to html nd append to footer section of page.  hyperlinks are also added
-//and custom classes were added to helper.js.
-function displayFooter() {
-    var formattedEmail = HTMLFooteremail.replace("%data%", bio.contacts.email);
-    var formattedMobile = HTMLFootermobile.replace("%data%", bio.contacts.mobile);
-    var formattedTwitter = HTMLFootertwitter.replace("%data%", bio.contacts.twitter);
-    var formattedLocation = HTMLFooterlocation.replace("%data5",bio.contacts.location);
-    $("#footerContacts").append(formattedEmail);
-    $("#footerContacts").append(formattedMobile);
-    $("#footerContacts").append(formattedTwitter);
-    $("#footerContacts").append(formattedLocation);
-    $(".footerEmail").attr("href", "mailto:" + bio.contacts.email);
-    $(".footerTwitter").attr("href", "http://www.twitter.com/" + bio.contacts.twitter);
-}
+
 
 //invoke display methods for each section.
 bio.display();
 work.display();
 projects.display();
 education.display();
-displayFooter();
 
 $("#mapDiv").append(googleMap);
