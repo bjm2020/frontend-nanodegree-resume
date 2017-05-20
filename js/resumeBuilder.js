@@ -73,33 +73,35 @@ var work = {
         "otherPositions": ["loan processor", "teller", "Account Specialist", "IT Manager", "Operations Manager"],
         "description": "I started my career at the credit union as a temporary worker during my first semester of college.  Since then I have gained experience in nearly every position available at the credit union.  As President/CEO, I have lead the credit union to achieving stable and healthy growth in a competitive market.",
         "location": "Metairie, LA",
-        "url": "http://www.fdlfcu.com"
-    }],
-    "positions": [{
-            "position": "Loan Processor",
-            "dates": "Dec 2001-Feb 2001"
-        },
-        {
-            "position": "Teller",
-            "dates": "Feb 2001 - Jan 2003"
-        },
-        {
-            "position": "Account Services Specialist",
-            "dates": "Jan 2003 - Aug 2005"
-        },
-        {
-            "position": "IT Manager",
-            "dates": "Aug 2005 - Sep 2013"
-        },
-        {
-            "position": "Operations Manager",
-            "dates": "Sep 2013 - Jan 2014"
-        },
-        {
-            "position": "President/CEO",
-            "dates": "Jan 2014 - Future"
-        }
-    ]
+        "url": "http://www.fdlfcu.com",
+        "positions": [{
+                "position": "Loan Processor",
+                "dates": "Dec 2001-Feb 2001"
+            },
+            {
+                "position": "Teller",
+                "dates": "Feb 2001 - Jan 2003"
+            },
+            {
+                "position": "Account Services Specialist",
+                "dates": "Jan 2003 - Aug 2005"
+            },
+            {
+                "position": "IT Manager",
+                "dates": "Aug 2005 - Sep 2013"
+            },
+            {
+                "position": "Operations Manager",
+                "dates": "Sep 2013 - Jan 2014"
+            },
+            {
+                "position": "President/CEO",
+                "dates": "Jan 2014 - Future"
+            }
+        ]
+    }]
+
+
 };
 
 //display work function
@@ -125,7 +127,7 @@ work.display = function() {
         $("#workExperience").append(HTMLposition);
 
         //loop through positions, format to html, and append to page
-        work.positions.forEach(function(position) {
+        job.positions.forEach(function(position) {
 
             var formattedPosition = HTMLPosition.replace("%data%", position.position);
             var formattedPositionDates = HTMLPositionDates.replace("%data%", position.dates);
